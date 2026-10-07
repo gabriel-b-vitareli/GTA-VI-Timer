@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grand Theft Auto VI — Contagem Regressiva</title>
+<meta name="theme-color" content="#0b0724">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Símbolo reutilizável da palmeira -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="palm" stroke-linecap="round">
+    <path d="M100 400C108 300 90 220 112 130" fill="none" stroke="currentColor" stroke-width="9"/>
+    <path d="M112 130C80 90 40 90 6 134C50 106 84 110 112 130Z"/>
+    <path d="M112 130C84 70 50 50 12 60C56 70 86 92 112 130Z"/>
+    <path d="M112 130C108 80 122 42 154 20C138 62 126 94 112 130Z"/>
+    <path d="M112 130C140 74 178 60 200 74C162 80 134 100 112 130Z"/>
+    <path d="M112 130C146 100 188 108 198 152C172 126 140 122 112 130Z"/>
+    <path d="M112 130C90 112 58 130 38 174C70 146 94 136 112 130Z"/>
+    <path d="M112 130C96 96 74 74 52 32C84 62 104 92 112 130Z"/>
+  </g>
+</defs></svg>
+
+<div class="scene" aria-hidden="true">
+  <div class="sky"></div>
+  <canvas id="fx"></canvas>
+  <div class="sun-wrap"><div class="rays"></div><div class="sun"></div></div>
+  <div class="clouds"><i></i><i></i><i></i></div>
+
+  <div class="layer far"  data-depth="6"><svg class="skyline" viewBox="0 0 1200 160" preserveAspectRatio="none"><path fill="#4a1d7a" d="M0 160V90h40V64h30v26h30V40h35v50h25V76h50v84zM300 160V80h40V34h26v46h34V96h60V58h30v102zM600 160V90h50V50h30v40h30V26h40v64h40V84h60v76zM940 160V72h35V44h28v28h40V92h50V64h35v96z"/></svg></div>
+  <div class="layer mid"  data-depth="14"><svg class="skyline" viewBox="0 0 1200 140" preserveAspectRatio="none"><path fill="#2a0f4a" d="M0 140V80h60V54h40v26h40V70h50V40h30v100zM380 140V70h30V30h22v40h36V90h50V60h40v80zM760 140V86h40V56h26v30h34V74h50V44h30v96z"/></svg></div>
+  <div class="layer sea-l" data-depth="4">
+    <div class="sea"><div class="glint"></div><div class="waves" id="waves"></div></div>
+  </div>
+
+  <div class="layer palm-l" data-depth="26">
+    <div class="palm p1"><svg viewBox="0 0 200 400"><use href="#palm"/></svg></div>
+    <div class="palm p2"><svg viewBox="0 0 200 400"><use href="#palm"/></svg></div>
+    <div class="palm p3"><svg viewBox="0 0 200 400"><use href="#palm"/></svg></div>
+    <div class="palm p4"><svg viewBox="0 0 200 400"><use href="#palm"/></svg></div>
+  </div>
+  <img class="char jason" alt="" hidden data-src="assets/jason.png">
+  <img class="char lucia" alt="" hidden data-src="assets/lucia.png">
+  <div class="flare"></div>
+  <div class="vignette"></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<main>
+  <p class="presents"><span>ROCKSTAR GAMES</span> APRESENTA</p>
+
+  <h1 class="logo" id="logo" aria-label="Grand Theft Auto VI">
+    <img id="logoImg" class="logo-img" alt="Grand Theft Auto VI" hidden>
+    <span class="logo-vec">
+      <span class="gta">Grand Theft Auto</span>
+      <svg class="vi-svg" viewBox="-20 -20 600 360" aria-hidden="true">
+        <defs>
+          <linearGradient id="gv" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3FD8FF"/><stop offset=".22" stop-color="#8F4DFF"/>
+            <stop offset=".45" stop-color="#E24FD0"/><stop offset=".7" stop-color="#FF4FA3"/>
+            <stop offset="1" stop-color="#FF8A3D"/>
+          </linearGradient>
+          <linearGradient id="gh" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity=".75"/><stop offset=".35" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+          <g id="vi-shape">
+            <polygon points="0,0 128,0 200,188 272,0 400,0 268,300 132,300"/>
+            <rect x="440" y="0" width="120" height="300"/>
+          </g>
+        </defs>
+        <use href="#vi-shape" x="9" y="11" fill="#000" stroke="#000" stroke-width="30" stroke-linejoin="round"/>
+        <use href="#vi-shape" fill="#000" stroke="#000" stroke-width="30" stroke-linejoin="round"/>
+        <use href="#vi-shape" fill="#fff" stroke="#fff" stroke-width="16" stroke-linejoin="round"/>
+        <use href="#vi-shape" fill="url(#gv)" stroke="url(#gv)" stroke-width="6" stroke-linejoin="round"/>
+        <use href="#vi-shape" fill="url(#gh)"/>
+      </svg>
+    </span>
+  </h1>
+
+  <section class="clock" role="timer" aria-label="Contagem regressiva para o lançamento">
+    <div class="u"><span class="n" id="d">000</span><span class="l">Dias</span></div>
+    <div class="sep">:</div>
+    <div class="u"><span class="n" id="h">00</span><span class="l">Horas</span></div>
+    <div class="sep">:</div>
+    <div class="u"><span class="n" id="m">00</span><span class="l">Minutos</span></div>
+    <div class="sep">:</div>
+    <div class="u"><span class="n" id="s">00</span><span class="l">Segundos</span></div>
+    <div class="sep dot">.</div>
+    <div class="u ms"><span class="n" id="ms">000</span><span class="l">Milissegundos</span></div>
+  </section>
+
+  <div class="progress" title="Tempo percorrido desde o primeiro trailer">
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <div class="plabels"><span>1º TRAILER · 05/12/2023</span><span id="pc">0%</span><span>LANÇAMENTO · 19/11/2026</span></div>
+  </div>
+
+  <section class="stats">
+    <div class="s"><b id="tw">0</b><span>Semanas</span></div>
+    <div class="s"><b id="th">0</b><span>Horas totais</span></div>
+    <div class="s"><b id="tm">0</b><span>Minutos totais</span></div>
+    <div class="s"><b id="ts">0</b><span>Segundos totais</span></div>
+    <div class="s wide"><b id="tms">0</b><span>Milissegundos totais</span></div>
+  </section>
+
+  <p class="date">19 <em>NOV</em> 2026 <span>•</span> PS5 &amp; XBOX SERIES X|S</p>
+  <p class="foot">Página de fã não oficial · Contagem até 00:00 no fuso do seu dispositivo</p>
+</main>
+
+<button class="music" id="music" hidden aria-label="Ligar/desligar música">♪</button>
+<script src="js/script.js"></script>
+</body>
+</html>
