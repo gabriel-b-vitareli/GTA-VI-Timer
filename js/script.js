@@ -141,7 +141,7 @@
   probe(['assets/hero.jpg', 'assets/hero.webp', 'assets/hero.png'], function (src) {
     root.style.setProperty('--hero', 'url("' + src + '")');
   });
-  var au = new Audio();
+  var au = new Audio(); window.GTA = { au: au };
   au.loop = true; au.volume = .5;
   au.addEventListener('canplaythrough', function () { $('music').hidden = false; }, { once: true });
   au.src = 'assets/music.mp3';
