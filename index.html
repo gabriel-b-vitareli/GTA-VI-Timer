@@ -7,9 +7,11 @@
 <meta name="theme-color" content="#0b0724">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;600&family=Montserrat:wght@500;600;700&family=Lilita+One&family=Permanent+Marker&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/extras.css">
+<link rel="stylesheet" href="css/v3.css">
+<script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("intro-on");setTimeout(function(){document.documentElement.classList.remove("intro-on")},5000)}</script>
 <link rel="icon" href="favicon.ico" sizes="any">
 <meta name="description" content="Contagem regressiva para o lançamento de GTA VI - 19/11/2026">
 <meta property="og:title" content="GTA VI — Contagem Regressiva">
@@ -17,6 +19,8 @@
 <meta property="og:image" content="assets/hero.jpg">
 </head>
 <body>
+
+<div id="intro" aria-hidden="true"><p class="i-pres">ROCKSTAR GAMES APRESENTA</p><div class="i-line"></div><img class="i-logo" src="assets/logo.webp" alt="" onerror="this.remove()"><span class="i-flash"></span><button class="i-skip" type="button">Toque para pular</button></div>
 
 <!-- Símbolo reutilizável da palmeira -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -34,24 +38,34 @@
 
 <div class="scene" aria-hidden="true">
   <div class="sky"></div>
+  <div class="hero-bg"></div>
   <canvas id="fx"></canvas>
   <div class="sun-wrap"><div class="rays"></div><div class="sun"></div></div>
   <div class="clouds"><i></i><i></i><i></i></div>
 
-  <div class="layer far"  data-depth="6"><svg class="skyline" viewBox="0 0 1200 160" preserveAspectRatio="none"><path fill="#4a1d7a" d="M0 160V90h40V64h30v26h30V40h35v50h25V76h50v84zM300 160V80h40V34h26v46h34V96h60V58h30v102zM600 160V90h50V50h30v40h30V26h40v64h40V84h60v76zM940 160V72h35V44h28v28h40V92h50V64h35v96z"/></svg></div>
-  <div class="layer mid"  data-depth="14"><svg class="skyline" viewBox="0 0 1200 140" preserveAspectRatio="none"><path fill="#2a0f4a" d="M0 140V80h60V54h40v26h40V70h50V40h30v100zM380 140V70h30V30h22v40h36V90h50V60h40v80zM760 140V86h40V56h26v30h34V74h50V44h30v96z"/></svg></div>
+  <div class="layer far"  data-depth="6"><svg class="landmarks" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+      <g fill="#3a1668" stroke="#3FD8FF" stroke-width="1.6" stroke-linejoin="round" style="filter:drop-shadow(0 0 5px #3FD8FF)">
+        <path d="M880 220V120h14V96h14V70h12V40l6-24 6 24v30h12v26h14v24h14v100z"/>
+      </g>
+      <g stroke="#FF4FA3" stroke-width="1.2" fill="none" opacity=".9" style="filter:drop-shadow(0 0 4px #FF4FA3)"><path d="M894 120h86M908 96h58M920 70h34"/></g>
+      <g stroke="#2a0f4a" stroke-width="3" fill="none"><path d="M254 220L270 60 286 220M258 190h24M262 150h16M265 110h10M258 190l24-40M282 190l-24-40M262 150l16-40M278 150l-16-40"/></g>
+      <circle class="beacon" cx="270" cy="56" r="4" fill="#ff3b4e"/>
+    </svg>
+    <svg class="skyline" viewBox="0 0 1200 160" preserveAspectRatio="none"><path fill="#4a1d7a" d="M0 160V90h40V64h30v26h30V40h35v50h25V76h50v84zM300 160V80h40V34h26v46h34V96h60V58h30v102zM600 160V90h50V50h30v40h30V26h40v64h40V84h60v76zM940 160V72h35V44h28v28h40V92h50V64h35v96z"/></svg></div>
+  <div class="layer mid"  data-depth="14"><svg class="skyline" viewBox="0 0 1200 140" preserveAspectRatio="none"><path fill="#2a0f4a" d="M0 140V80h60V54h40v26h40V70h50V40h30v100zM380 140V70h30V30h22v40h36V90h50V60h40v80zM760 140V86h40V56h26v30h34V74h50V44h30v96z"/></svg><i class="neon v n1">VICE</i><i class="neon v n2">HOTEL</i><i class="neon v n3">BAR</i></div>
+  <div class="haze"></div><div class="haze h2"></div>
   <div class="layer sea-l" data-depth="4">
     <div class="sea"><div class="glint"></div><div class="waves" id="waves"></div></div>
   </div>
 
+  <img class="char jason" alt="" hidden data-src="assets/jason.png">
+  <img class="char lucia" alt="" hidden data-src="assets/lucia.png">
   <div class="layer palm-l" data-depth="26">
     <div class="palm p1"><svg viewBox="0 0 200 400"><use href="#palm"/></svg></div>
     <div class="palm p2"><svg viewBox="0 0 200 400"><use href="#palm"/></svg></div>
     <div class="palm p3"><svg viewBox="0 0 200 400"><use href="#palm"/></svg></div>
     <div class="palm p4"><svg viewBox="0 0 200 400"><use href="#palm"/></svg></div>
   </div>
-  <img class="char jason" alt="" hidden data-src="assets/jason.png">
-  <img class="char lucia" alt="" hidden data-src="assets/lucia.png">
   <div class="flare"></div>
   <div class="vignette"></div>
 </div>
@@ -120,5 +134,6 @@
 <button class="music" id="music" hidden aria-label="Ligar/desligar música">♪</button>
 <script src="js/script.js"></script>
 <script src="js/extras.js"></script>
+<script src="js/v3.js"></script>
 </body>
 </html>
